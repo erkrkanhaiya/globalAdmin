@@ -25,18 +25,19 @@ export const connectDatabase = async (): Promise<void> => {
       serverSelectionTimeoutMS: 5000, // How long to try selecting a server
       socketTimeoutMS: 45000, // How long a send or receive on a socket can take before timeout
       family: 4, // Use IPv4, skip trying IPv6
-      // Disable mongoose buffering for better performance
-      bufferCommands: false,
+      // Enable mongoose buffering to allow operations before connection
+      bufferCommands: true,
     }
 
     // Log connection attempt (without password)
     const uriWithoutPassword = MONGODB_URI.replace(/:\/\/[^:]+:[^@]+@/, '://***:***@')
-    console.log(`🔌 Attempting to connect to MongoDB Atlas...`)
+    const isLocal = MONGODB_URI.includes('localhost') || MONGODB_URI.includes('127.0.0.1')
+    console.log(`🔌 Attempting to connect to ${isLocal ? 'Local MongoDB' : 'MongoDB Atlas'}...`)
     console.log(`📡 URI: ${uriWithoutPassword}`)
 
     await mongoose.connect(MONGODB_URI, options)
     
-    console.log(`✅ MongoDB Connected to Atlas`)
+    console.log(`✅ MongoDB Connected ${isLocal ? '(Local)' : '(Atlas)'}`)
     console.log(`📦 Database: ${mongoose.connection.db?.databaseName || DB_NAME}`)
     console.log(`🔗 Connection State: ${mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected'}`)
   } catch (error: any) {
@@ -48,7 +49,14 @@ export const connectDatabase = async (): Promise<void> => {
       console.error('   3. Check MongoDB Atlas Network Access (IP Whitelist)')
       console.error('   4. Verify database user has correct permissions')
     }
-    process.exit(1)
+    if (error.message.includes('ENOTFOUND') || error.message.includes('NXDOMAIN')) {
+      console.error('💡 DNS Error: MongoDB hostname cannot be resolved')
+      console.error('   Please verify the MongoDB connection string is correct')
+      console.error('   Current URI:', MONGODB_URI.replace(/:\/\/[^:]+:[^@]+@/, '://***:***@'))
+    }
+    console.error('⚠️  Server will continue without MongoDB connection. Some features may not work.')
+    // Don't exit - allow server to start without DB for now
+    // process.exit(1)
   }
 }
 

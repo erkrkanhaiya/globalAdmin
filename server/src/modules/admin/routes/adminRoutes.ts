@@ -2,6 +2,8 @@ import { Router } from 'express'
 import {
   getAllUsers,
   createAgent as createUserAgent,
+  createAdmin,
+  updateAdminProducts,
   convertToAgent,
   verifyUser,
   updateUserRole,
@@ -132,6 +134,29 @@ router.post('/users/:id/verify', verifyUser)
  *       - bearerAuth: []
  */
 router.post('/users/:id/convert-to-agent', convertToAgent)
+
+// ==================== Admin Management ====================
+/**
+ * @swagger
+ * /api/v1/admin/admins:
+ *   post:
+ *     summary: Create admin user (Super Admin only)
+ *     tags: [Admin - Users]
+ *     security:
+ *       - bearerAuth: []
+ */
+router.post('/admins', authorize('super_admin'), createAdmin)
+
+/**
+ * @swagger
+ * /api/v1/admin/users/{id}/products:
+ *   patch:
+ *     summary: Update admin's assigned products (Super Admin only)
+ *     tags: [Admin - Users]
+ *     security:
+ *       - bearerAuth: []
+ */
+router.patch('/users/:id/products', authorize('super_admin'), updateAdminProducts)
 
 // ==================== Agents Management ====================
 /**
@@ -361,5 +386,28 @@ router.patch('/support/tickets/:id/status', updateTicketStatus)
  *       - bearerAuth: []
  */
 router.post('/support/tickets/:id/reply', addTicketReply)
+
+// ==================== Admin Management ====================
+/**
+ * @swagger
+ * /api/v1/admin/admins:
+ *   post:
+ *     summary: Create admin user (Super Admin only)
+ *     tags: [Admin - Users]
+ *     security:
+ *       - bearerAuth: []
+ */
+router.post('/admins', authorize('super_admin'), createAdmin)
+
+/**
+ * @swagger
+ * /api/v1/admin/users/{id}/products:
+ *   patch:
+ *     summary: Update admin's assigned products (Super Admin only)
+ *     tags: [Admin - Users]
+ *     security:
+ *       - bearerAuth: []
+ */
+router.patch('/users/:id/products', authorize('super_admin'), updateAdminProducts)
 
 export default router

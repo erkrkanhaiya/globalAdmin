@@ -107,6 +107,8 @@ export const login = async (
           email: user.email,
           role: user.role,
           avatar: user.avatar,
+          assignedProducts: user.assignedProducts || [], // Products this admin can access
+          // If assignedProducts is empty/null, admin has access to all products (super admin)
         },
         accessToken: {
           token,
@@ -145,6 +147,7 @@ export const getMe = async (
           avatar: user.avatar,
           isActive: user.isActive,
           lastLogin: user.lastLogin,
+          assignedProducts: user.assignedProducts || [], // Products this admin can access
         },
       },
     })

@@ -36,6 +36,8 @@ export interface IUser extends Document {
   lastLogin?: Date
   source?: 'web' | 'mobile'
   parentId?: mongoose.Types.ObjectId // For agents created by admin
+  assignedProducts?: string[] // Product slugs this admin can access (e.g., ['restaurant', 'livenotes'])
+  // Super admin has access to all products (assignedProducts is empty/null)
   metadata?: {
     licenseNumber?: string // For doctors
     specialization?: string // For doctors
@@ -147,6 +149,13 @@ const UserSchema = new Schema<IUser>(
     parentId: {
       type: Schema.Types.ObjectId,
       ref: 'User',
+    },
+    assignedProducts: {
+      type: [String],
+      default: [],
+      // Array of product slugs (e.g., ['restaurant', 'livenotes'])
+      // Empty array or null means access to all products (super admin)
+      // For regular admins, only listed products are accessible
     },
     metadata: {
       licenseNumber: String,
