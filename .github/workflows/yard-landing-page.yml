@@ -1,0 +1,31 @@
+name: Deploy 60 Yard Landing App
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'landing/**'
+
+jobs:
+  deploy-landing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy Landing Docker App
+        env:
+          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY }}
+          HOSTNAME: ${{ secrets.HOSTNAME }}
+          USERNAME: ${{ secrets.USERNAME }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USERNAME}@${HOSTNAME} '
+            cd /home/ubuntu/60yard-admin &&
+            git checkout main &&
+            git fetch --all &&
+            git pull origin main &&
+            docker system prune -af &&
+            docker-compose stop 60yard-landing-app &&
+            docker-compose rm -f 60yard-landing-app &&
+            docker-compose up -d --build 60yard-landing-app
+          '
+

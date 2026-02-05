@@ -1,0 +1,30 @@
+name: Deploy 60Yard Backend App to EC2
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'server/**'
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy Backend Docker App
+        env:
+          PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY }}
+          HOSTNAME: ${{ secrets.HOSTNAME }}
+          USERNAME: ${{ secrets.USERNAME }}
+        run: |
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USERNAME}@${HOSTNAME} '
+            cd /home/ubuntu/60yard-admin/server &&
+            git checkout main &&
+            git fetch --all &&
+            git pull origin main &&
+            docker system prune -af &&
+            docker-compose stop 60yard-backend-app &&
+            docker-compose rm -f 60yard-backend-app &&
+            docker-compose up -d --build 60yard-backend-app
+          '
