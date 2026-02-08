@@ -1,12 +1,12 @@
 import { Response, NextFunction } from 'express'
-import { getUserModel } from '../../auth/models/User.js'
-import { Property } from '../../property/models/Property.js'
-import { Agent } from '../../agent/models/Agent.js'
-import { Payment } from '../../payment/models/Payment.js'
-import { AuctionRequest } from '../../auction/models/AuctionRequest.js'
-import { SupportTicket } from '../../support/models/SupportTicket.js'
-import { CustomError } from "../../../../middleware/errorHandler.js'
-import { AuthRequest } from "../../../../middleware/auth.js'
+import { getUserModel } from '@/products/restaurant/modules/auth/models/User.js'
+import { Property } from '@/products/restaurant/modules/property/models/Property.js'
+import { Agent } from '@/products/restaurant/modules/agent/models/Agent.js'
+import { Payment } from '@/products/restaurant/modules/payment/models/Payment.js'
+import { AuctionRequest } from '@/products/restaurant/modules/auction/models/AuctionRequest.js'
+import { SupportTicket } from '@/products/restaurant/modules/support/models/SupportTicket.js'
+import { CustomError } from "@/middleware/errorHandler.js"
+import { AuthRequest } from "@/middleware/auth.js"
 
 // Helper to get User model from request
 const getUser = (req: any) => {

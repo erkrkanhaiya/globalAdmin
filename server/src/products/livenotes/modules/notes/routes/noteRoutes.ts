@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { protect } from "../../../../middleware/auth.js'
-import { getNotes, createNote } from '../controllers/noteController.js'
+import { protect } from "@/middleware/auth.js"
+import { getNotes, createNote } from '@/products/livenotes/modules/noteController.js'
 
 const router = Router()
 

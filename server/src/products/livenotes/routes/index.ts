@@ -1,10 +1,10 @@
 import { Router } from 'express'
-import { protect } from "../../../../middleware/auth.js'
-import { getDashboard } from '../controllers/dashboardController.js'
+import { protect } from "@/middleware/auth.js"
+import { getDashboard } from '@/products/livenotes/controllers/dashboardController.js'
 
 // Import product modules
-import { authRoutes } from '../modules/auth/index.js'
-import { noteRoutes } from '../modules/notes/index.js'
+import { authRoutes } from '@/products/livenotes/modules/auth/index.js'
+import { noteRoutes } from '@/products/livenotes/modules/notes/index.js'
 
 const router = Router()
 

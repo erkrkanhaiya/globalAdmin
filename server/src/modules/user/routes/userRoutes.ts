@@ -10,14 +10,14 @@ import {
   getVerificationStatus,
   changePassword,
 } from '../controllers/userController.js'
-import { protect } from '../../../middleware/auth.js'
-import { basicAuth } from '../../../middleware/basicAuth.js'
-import { validate } from '../../../middleware/validator.js'
-import { agentRoutes } from '../../agent/index.js'
-import { propertyRoutes } from '../../property/index.js'
-import { auctionRoutes } from '../../auction/index.js'
-import { paymentRoutes } from '../../payment/index.js'
-import { supportRoutes } from '../../support/index.js'
+import { protect } from '@/middleware/auth.js' 
+import { basicAuth } from '@/middleware/basicAuth.js'
+import { validate } from '@/middleware/validator.js'
+import { agentRoutes } from '@/modules/agent/index.js'
+import { propertyRoutes } from '@/modules/property/index.js'
+import { auctionRoutes } from '@/modules/auction/index.js'
+import { paymentRoutes } from '@/modules/payment/index.js'
+import { supportRoutes } from '@/modules/support/index.js'
 
 const router = Router()
 

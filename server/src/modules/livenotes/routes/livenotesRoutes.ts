@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express'
-import { protect } from '../../../middleware/auth.js'
+import { protect } from '@/middleware/auth.js'
 
 const router = Router()
 

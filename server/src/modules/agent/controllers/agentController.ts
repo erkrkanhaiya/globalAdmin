@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express'
-import { Agent } from '../models/Agent.js'
-import { CustomError } from '../../../middleware/errorHandler.js'
-import { AuthRequest } from '../../../middleware/auth.js'
+import { Agent } from '@/modules/agent/models/Agent.js'
+import { CustomError } from '@/middleware/errorHandler.js'
+import { AuthRequest } from '@/middleware/auth.js'
 
 // @desc    Get all agents
 // @route   GET /api/v1/agents

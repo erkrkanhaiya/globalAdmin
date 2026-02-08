@@ -5,8 +5,8 @@ import {
   createProperty,
   updateProperty,
   deleteProperty,
-} from '../controllers/propertyController.js'
-import { protect, authorize } from "../../../../middleware/auth.js'
+} from '../controllers/propertyController.js';
+import { protect, authorize } from '@/middleware/auth.js'
 
 const router = Router()
 

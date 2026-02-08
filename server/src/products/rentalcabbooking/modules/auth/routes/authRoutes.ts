@@ -5,11 +5,11 @@ import {
   getMe,
   validateRegister,
   validateLogin,
-} from '../controllers/authController.js'
-import { protect } from "../../../../middleware/auth.js'
-import { basicAuth } from "../../../../middleware/basicAuth.js'
-import { validate } from "../../../../middleware/validator.js'
-import { authLimiter } from '../../../config/rateLimit.js'
+} from '../controllers/authController.js';
+import { protect } from '@/middleware/auth.js'
+import { basicAuth } from '@/middleware/basicAuth.js'
+import { validate } from '@/middleware/validator.js'
+import { authLimiter } from '@/config/rateLimit.js'
 
 const router = Router()
 

@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express'
-import { Payment } from '../../payment/models/Payment.js'
-import { CustomError } from '../../../middleware/errorHandler.js'
-import { AuthRequest } from '../../../middleware/auth.js'
+import { Payment } from '@/modules/payment/models/Payment.js'
+import { CustomError } from '@/middleware/errorHandler.js'
+import { AuthRequest } from '@/middleware/auth.js'
 
 // @desc    Get all payments (Admin)
 // @route   GET /api/v1/admin/payments

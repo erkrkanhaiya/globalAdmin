@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import { protect } from "../../../../middleware/auth.js'
-import { basicAuth } from "../../../../middleware/basicAuth.js'
-import { login } from '../controllers/authController.js'
+import { protect } from "@/middleware/auth.js"
+import { basicAuth } from "@/middleware/basicAuth.js"
+import { login } from '@/products/whatsappapi/controllers/authController.js'
 
 const router = Router()
 

@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { protect } from "../../../../middleware/auth.js'
+import { protect } from "@/middleware/auth.js"
 import { getOrders, createOrder } from '../controllers/orderController.js'
 
 const router = Router()

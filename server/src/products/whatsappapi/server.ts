@@ -14,15 +14,15 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import compression from 'compression'
 import rateLimit from 'express-rate-limit'
-import { config } from '../../config/env.js'
-import { connectDatabase } from '../../config/database.js'
-import { getProductConnection } from '../../config/multiDatabase.js'
-import { Product } from '../../modules/product/models/Product.js'
-import { errorHandler } from "../../../../middleware/errorHandler.js'
+import { config } from '@/config/env.js'
+import { connectDatabase } from '@/config/database.js'
+import { getProductConnection } from '@/config/multiDatabase.js'
+import { Product } from '@/modules/product/models/Product.js'
+import { errorHandler } from "@/middleware/errorHandler.js"
 import swaggerUi from 'swagger-ui-express'
-import { requestLogger } from "../../../../middleware/requestLogger.js'
-import { swaggerSpec } from '../../config/swagger.whatsappapi.js'
-import whatsappapiRoutes from './routes/index.js'
+import { requestLogger } from "@/middleware/requestLogger.js"
+import { swaggerSpec } from '@/config/swagger.whatsappapi.js'
+import whatsappapiRoutes from '@/products/whatsappapi/routes/index.js'
 
 const PRODUCT_SLUG = 'whatsappapi'
 const DEFAULT_PORT = 5005

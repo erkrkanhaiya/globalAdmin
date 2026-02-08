@@ -5,7 +5,7 @@ import {
   createProduct,
   updateProduct,
 } from '../controllers/productController.js'
-import { protect, authorize } from '../../../middleware/auth.js'
+import { protect, authorize } from '@/middleware/auth.js'
 
 const router = Router()
 

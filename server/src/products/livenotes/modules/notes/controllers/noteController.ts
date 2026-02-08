@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
-import { CustomError } from "../../../../middleware/errorHandler.js'
-import { createNoteModel } from '../models/Note.js'
+import { CustomError } from "@/middleware/errorHandler.js"
+import { createNoteModel } from '@/products/livenotes/modules/Note.js'
 
 /**
  * @desc    Get all notes

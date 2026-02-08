@@ -14,15 +14,15 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import compression from 'compression'
 import rateLimit from 'express-rate-limit'
-import { config } from '../../config/env.js'
-import { connectDatabase } from '../../config/database.js'
-import { getProductConnection } from '../../config/multiDatabase.js'
-import { Product } from '../../modules/product/models/Product.js'
-import { errorHandler } from "../../../../middleware/errorHandler.js'
+import { config } from '@/config/env.js'
+import { connectDatabase } from '@/config/database.js'
+import { getProductConnection } from '@/config/multiDatabase.js'
+import { Product } from '@/modules/product/models/Product.js'
+import { errorHandler } from "@/middleware/errorHandler.js"
 import swaggerUi from 'swagger-ui-express'
-import { requestLogger } from "../../../../middleware/requestLogger.js'
-import { swaggerSpec } from '../../config/swagger.livenotes.js'
-import livenotesRoutes from './routes/index.js'
+import { requestLogger } from "@/middleware/requestLogger.js"
+import { swaggerSpec } from '@/config/swagger.livenotes.js'
+import livenotesRoutes from '@/products/livenotes/routes/index.js'
 
 const PRODUCT_SLUG = 'livenotes'
 const DEFAULT_PORT = 5003
@@ -96,6 +96,59 @@ app.use(async (req: Request, res: Response, next: NextFunction) => {
   }
 })
 
+// Swagger API Documentation
+if (config.SWAGGER_ENABLED) {
+  const swaggerPath = '/api-docs'
+  
+  const swaggerBasicAuth = (req: Request, res: Response, next: NextFunction) => {
+    const staticAssetPatterns = ['/swagger-ui', '/favicon', '.css', '.js', '.png', '.jpg', '.gif', '.svg', '.woff', '.woff2', '.ttf']
+    if (staticAssetPatterns.some(pattern => req.path.includes(pattern))) {
+      return next()
+    }
+    
+    const authHeader = req.headers.authorization
+    if (!authHeader || !authHeader.startsWith('Basic ')) {
+      res.setHeader('WWW-Authenticate', 'Basic realm="LiveNotes API Documentation"')
+      return res.status(401).send('Authentication required')
+    }
+    
+    try {
+      const base64Credentials = authHeader.split(' ')[1]
+      const credentials = Buffer.from(base64Credentials, 'base64').toString('utf-8')
+      const [username, password] = credentials.split(':')
+      
+      if (username === config.SWAGGER_USERNAME && password === config.SWAGGER_PASSWORD) {
+        return next()
+      }
+      
+      res.setHeader('WWW-Authenticate', 'Basic realm="LiveNotes API Documentation"')
+      return res.status(401).send('Invalid credentials')
+    } catch (error) {
+      res.setHeader('WWW-Authenticate', 'Basic realm="LiveNotes API Documentation"')
+      return res.status(401).send('Authentication failed')
+    }
+  }
+  
+  const swaggerRouter = Router()
+  swaggerRouter.use(swaggerBasicAuth)
+  swaggerRouter.use(swaggerUi.serve)
+  swaggerRouter.get('/', swaggerUi.setup(swaggerSpec, {
+    customCss: '.swagger-ui .topbar { display: none }',
+    customSiteTitle: 'LiveNotes API Documentation',
+    swaggerOptions: {
+      persistAuthorization: true,
+      displayRequestDuration: true,
+    },
+  }))
+  swaggerRouter.get('/.json', (req, res) => {
+    res.setHeader('Content-Type', 'application/json')
+    res.send(swaggerSpec)
+  })
+  
+  app.use(swaggerPath, swaggerRouter)
+  console.log(`📚 LiveNotes Swagger docs available at http://localhost:${process.env.PORT || DEFAULT_PORT}${swaggerPath}`)
+}
+
 app.use('/api/v1', livenotesRoutes)
 
 app.get('/', (req: Request, res: Response) => {
@@ -130,6 +183,9 @@ const startServer = async () => {
       console.log(`📍 Environment: ${config.NODE_ENV}`)
       console.log(`🌐 Health check: http://localhost:${port}/health`)
       console.log(`📡 API: http://localhost:${port}/api/v1`)
+      if (config.SWAGGER_ENABLED) {
+        console.log(`📚 Swagger docs: http://localhost:${port}/api-docs`)
+      }
     })
 
     process.on('SIGTERM', () => {
@@ -145,6 +201,7 @@ const startServer = async () => {
   }
 }
 
+// Start if this file is run directly
 if (import.meta.url === `file://${process.argv[1]}`) {
   startServer()
 }

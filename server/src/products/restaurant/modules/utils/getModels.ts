@@ -3,9 +3,9 @@
  * This ensures all models use the product's database connection
  */
 
-import { getUserModel } from '../../auth/models/User.js'
+import { getUserModel } from '@/products/restaurant/modules/auth/models/User.js'
 // Import other model getters as needed
-// import { getAgentModel } from '../../agent/models/Agent.js'
+// import { getAgentModel } from '@/modules/agent/models/Agent.js'
 // etc.
 
 export const getProductModels = (productConnection: any) => {

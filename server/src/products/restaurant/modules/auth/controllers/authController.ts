@@ -2,10 +2,10 @@ import { Request, Response, NextFunction } from 'express'
 import mongoose from 'mongoose'
 import jwt from 'jsonwebtoken'
 import { body } from 'express-validator'
-import { config } from '../../../../config/env.js'
-import { CustomError } from "../../../../middleware/errorHandler.js'
-import { AuthRequest } from "../../../../middleware/auth.js'
-import { getUserModel } from '../models/User.js'
+import { config } from '@/config/env.js'
+import { CustomError } from '@/middleware/errorHandler.js'
+import { AuthRequest } from '@/middleware/auth.js'
+import { getUserModel } from '@/products/restaurant/modules/auth/models/User.js'
 
 // Generate JWT Token
 const generateToken = (id: string, email: string, role: string): string => {

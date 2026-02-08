@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express'
-import { SupportTicket } from '../../support/models/SupportTicket.js'
-import { CustomError } from '../../../middleware/errorHandler.js'
-import { AuthRequest } from '../../../middleware/auth.js'
+import { SupportTicket } from '@/modules/support/models/SupportTicket.js'
+import { CustomError } from '@/middleware/errorHandler.js'
+import { AuthRequest } from '@/middleware/auth.js'
 
 // @desc    Get all support tickets (Admin)
 // @route   GET /api/v1/admin/support/tickets

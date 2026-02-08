@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { CustomError } from "../../../../middleware/errorHandler.js'
+import { CustomError } from "@/middleware/errorHandler.js"
 import { createOrderModel } from '../models/Order.js'
 
 /**

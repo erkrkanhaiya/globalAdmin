@@ -1,12 +1,12 @@
 import { Response, NextFunction } from 'express'
-import { User } from '../../auth/models/User.js'
-import { Property } from '../../property/models/Property.js'
-import { Agent } from '../../agent/models/Agent.js'
-import { Payment } from '../../payment/models/Payment.js'
-import { AuctionRequest } from '../../auction/models/AuctionRequest.js'
-import { SupportTicket } from '../../support/models/SupportTicket.js'
-import { CustomError } from '../../../middleware/errorHandler.js'
-import { AuthRequest } from '../../../middleware/auth.js'
+import { User } from '@/modules/auth/models/User.js'
+import { Property } from '@/modules/property/models/Property.js'
+import { Agent } from '@/modules/agent/models/Agent.js'
+import { Payment } from '@/modules/payment/models/Payment.js'
+import { AuctionRequest } from '@/modules/auction/models/AuctionRequest.js'
+import { SupportTicket } from '@/modules/support/models/SupportTicket.js'
+import { CustomError } from '@/middleware/errorHandler.js'
+import { AuthRequest } from '@/middleware/auth.js'
 
 // @desc    Get admin dashboard statistics
 // @route   GET /api/v1/admin/dashboard

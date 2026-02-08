@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { CustomError } from "../../../../middleware/errorHandler.js'
+import { CustomError } from "@/middleware/errorHandler.js"
 
 /**
  * @desc    WhatsApp API login

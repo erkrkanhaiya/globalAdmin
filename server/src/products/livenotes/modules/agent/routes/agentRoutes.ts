@@ -2,8 +2,8 @@ import { Router } from 'express'
 import {
   getAgents,
   getAgent,
-} from '../controllers/agentController.js'
-import { protect } from "../../../../middleware/auth.js'
+} from '@/products/livenotes/modules/agentController.js"
+import { protect } from "@/middleware/auth.js"
 
 const router = Router()
 

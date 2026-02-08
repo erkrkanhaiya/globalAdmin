@@ -5,7 +5,7 @@ import {
   createTicket,
   addReply,
 } from '../controllers/supportController.js'
-import { protect } from '../../../middleware/auth.js'
+import { protect } from '@/middleware/auth.js'
 
 const router = Router()
 

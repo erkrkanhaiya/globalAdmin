@@ -1,18 +1,18 @@
 import { Router } from 'express'
-import { protect } from "../../../../middleware/auth.js'
-import { getDashboard } from '../controllers/dashboardController.js'
+import { protect } from "@/middleware/auth.js"
+import { getDashboard } from '@/products/restaurant/controllers/dashboardController.js'
 
 // Import all product modules
-import { default as authRoutes } from '../modules/auth/routes/authRoutes.js'
-import { default as userRoutes } from '../modules/user/routes/userRoutes.js'
-import { default as adminRoutes } from '../modules/admin/routes/adminRoutes.js'
-import { default as orderRoutes } from '../modules/orders/routes/orderRoutes.js'
+import { default as authRoutes } from '@/products/restaurant/modules/auth/routes/authRoutes.js'
+import { default as userRoutes } from '@/products/restaurant/modules/user/routes/userRoutes.js'
+import { default as adminRoutes } from '@/products/restaurant/modules/admin/routes/adminRoutes.js'
+import { default as orderRoutes } from '@/products/restaurant/modules/orders/routes/orderRoutes.js'
 // Import other modules as needed
-// import { default as agentRoutes } from '../modules/agent/routes/agentRoutes.js'
-// import { default as propertyRoutes } from '../modules/property/routes/propertyRoutes.js'
-// import { default as supportRoutes } from '../modules/support/routes/supportRoutes.js'
-// import { default as paymentRoutes } from '../modules/payment/routes/paymentRoutes.js'
-// import { default as auctionRoutes } from '../modules/auction/routes/auctionRoutes.js'
+// import { default as agentRoutes } from '../modules/agent/routes/agentRoutes.js"
+// import { default as propertyRoutes } from '../modules/property/routes/propertyRoutes.js"
+// import { default as supportRoutes } from '../modules/support/routes/supportRoutes.js"
+// import { default as paymentRoutes } from '../modules/payment/routes/paymentRoutes.js"
+// import { default as auctionRoutes } from '../modules/auction/routes/auctionRoutes.js"
 
 const router = Router()
 

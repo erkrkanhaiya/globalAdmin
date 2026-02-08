@@ -3,7 +3,7 @@ import {
   getAgents,
   getAgent,
 } from '../controllers/agentController.js'
-import { protect } from '../../../middleware/auth.js'
+import { protect } from '@/middleware/auth.js'
 
 const router = Router()
 

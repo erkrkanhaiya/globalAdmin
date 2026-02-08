@@ -1,14 +1,14 @@
 import { Response, NextFunction } from 'express'
 import mongoose from 'mongoose'
-import { getUserModel, UserRole } from '../../auth/models/User.js'
+import { getUserModel, UserRole } from '@/products/restaurant/modules/auth/models/User.js'
 
 // Helper to get User model from request
 const getUser = (req: any) => {
   const productConnection = req.productConnection
   return getUserModel(productConnection)
 }
-import { CustomError } from "../../../../middleware/errorHandler.js'
-import { AuthRequest } from "../../../../middleware/auth.js'
+import { CustomError } from "@/middleware/errorHandler.js"
+import { AuthRequest } from "@/middleware/auth.js"
 import { nanoid } from 'nanoid'
 
 // @desc    Get all users (Admin only)
@@ -89,7 +89,7 @@ export const createAgent = async (
   try {
     const { name, email, phone, password, agentCode } = req.body
 
-    const User = getUser(req)
+    let User = getUser(req)
     const existingUser = await User.findOne({ email })
     if (existingUser) {
       throw new CustomError('User with this email already exists', 400)
@@ -97,7 +97,7 @@ export const createAgent = async (
 
     const code = agentCode || `AGT-${nanoid(8).toUpperCase()}`
 
-    const User = getUser(req)
+     User = getUser(req)
     const agent = await User.create({
       name,
       email,
@@ -345,6 +345,7 @@ export const getUserById = async (
   next: NextFunction
 ): Promise<void> => {
   try {
+    const User = getUser(req)
     const user = await User.findById(req.params.id)
       .select('-password')
       .populate('verifiedBy', 'name email')

@@ -7,43 +7,43 @@ import {
   updateUserRole,
   updateUserStatus,
   getUserById,
-} from '../controllers/adminController.js'
+} from '@/products/whatsappapi/modules/adminController.js"
 import {
   getAllProperties,
   getPropertyById,
   createProperty,
   updateProperty,
   deleteProperty,
-} from '../controllers/propertyController.js'
+} from '@/products/whatsappapi/modules/propertyController.js"
 import {
   getAllAgents,
   getAgentById,
   createAgent as createAgentDocument,
   updateAgent,
   deleteAgent,
-} from '../controllers/agentController.js'
+} from '@/products/whatsappapi/modules/agentController.js"
 import {
   getAllPayments,
   getPaymentById,
   updatePaymentStatus,
   getPaymentStats,
-} from '../controllers/paymentController.js'
+} from '@/products/whatsappapi/modules/paymentController.js"
 import {
   getAllAuctionRequests,
   getAuctionRequestById,
   approveAuctionRequest,
   declineAuctionRequest,
   deleteAuctionRequest,
-} from '../controllers/auctionController.js'
+} from '@/products/whatsappapi/modules/auctionController.js"
 import {
   getAllTickets,
   getTicketById,
   updateTicketStatus,
   addTicketReply,
   deleteTicket,
-} from '../controllers/supportController.js'
-import { getDashboardStats } from '../controllers/dashboardController.js'
-import { protect, authorize } from "../../../../middleware/auth.js'
+} from '@/products/whatsappapi/modules/supportController.js"
+import { getDashboardStats } from '@/products/whatsappapi/modules/dashboardController.js"
+import { protect, authorize } from "@/middleware/auth.js"
 
 const router = Router()
 

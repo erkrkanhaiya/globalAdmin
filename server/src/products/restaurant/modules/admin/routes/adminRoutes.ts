@@ -7,43 +7,43 @@ import {
   updateUserRole,
   updateUserStatus,
   getUserById,
-} from '../controllers/adminController.js'
+} from '../controllers/adminController.js';
 import {
   getAllProperties,
   getPropertyById,
   createProperty,
   updateProperty,
   deleteProperty,
-} from '../controllers/propertyController.js'
+} from '../controllers/propertyController.js';
 import {
   getAllAgents,
   getAgentById,
   createAgent as createAgentDocument,
   updateAgent,
   deleteAgent,
-} from '../controllers/agentController.js'
+} from '../controllers/agentController.js';
 import {
   getAllPayments,
   getPaymentById,
   updatePaymentStatus,
   getPaymentStats,
-} from '../controllers/paymentController.js'
+} from '../controllers/paymentController.js';
 import {
   getAllAuctionRequests,
   getAuctionRequestById,
   approveAuctionRequest,
   declineAuctionRequest,
   deleteAuctionRequest,
-} from '../controllers/auctionController.js'
+} from '../controllers/auctionController.js';
 import {
   getAllTickets,
   getTicketById,
   updateTicketStatus,
   addTicketReply,
   deleteTicket,
-} from '../controllers/supportController.js'
-import { getDashboardStats } from '../controllers/dashboardController.js'
-import { protect, authorize } from "../../../../middleware/auth.js'
+} from '../controllers/supportController.js';
+import { getDashboardStats } from '../controllers/dashboardController.js';
+import { protect, authorize } from "@/middleware/auth.js";
 
 const router = Router()
 

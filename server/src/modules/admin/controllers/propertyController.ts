@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express'
-import { Property } from '../../property/models/Property.js'
-import { CustomError } from '../../../middleware/errorHandler.js'
-import { AuthRequest } from '../../../middleware/auth.js'
+import { Property } from '@/modules/property/models/Property.js'
+import { CustomError } from '@/middleware/errorHandler.js'
+import { AuthRequest } from '@/middleware/auth.js'
 
 // @desc    Get all properties (Admin)
 // @route   GET /api/v1/admin/properties

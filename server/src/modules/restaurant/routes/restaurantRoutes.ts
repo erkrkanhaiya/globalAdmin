@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express'
-import { protect } from '../../../middleware/auth.js'
-import { CustomError } from '../../../middleware/errorHandler.js'
+import { protect } from '@/middleware/auth.js'
+import { CustomError } from '@/middleware/errorHandler.js'
 
 const router = Router()
 

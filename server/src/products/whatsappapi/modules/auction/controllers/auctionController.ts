@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express'
-import { AuctionRequest } from '../models/AuctionRequest.js'
-import { CustomError } from "../../../../middleware/errorHandler.js'
-import { AuthRequest } from "../../../../middleware/auth.js'
+import { AuctionRequest } from '@/products/whatsappapi/modules/AuctionRequest.js"
+import { CustomError } from "@/middleware/errorHandler.js"
+import { AuthRequest } from "@/middleware/auth.js"
 
 // @desc    Get all auction requests
 // @route   GET /api/v1/auction-requests

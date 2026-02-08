@@ -2,8 +2,8 @@ import { Router } from 'express'
 import {
   getAuctionRequest,
   submitAuctionRequest,
-} from '../controllers/auctionController.js'
-import { protect } from "../../../../middleware/auth.js'
+} from '@/products/whatsappapi/modules/auctionController.js"
+import { protect } from "@/middleware/auth.js"
 
 const router = Router()
 

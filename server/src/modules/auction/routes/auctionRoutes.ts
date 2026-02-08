@@ -3,7 +3,7 @@ import {
   getAuctionRequest,
   submitAuctionRequest,
 } from '../controllers/auctionController.js'
-import { protect } from '../../../middleware/auth.js'
+import { protect } from '@/middleware/auth.js'
 
 const router = Router()
 

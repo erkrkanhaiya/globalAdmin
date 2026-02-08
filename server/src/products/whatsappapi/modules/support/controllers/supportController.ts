@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express'
-import { SupportTicket } from '../models/SupportTicket.js'
-import { CustomError } from "../../../../middleware/errorHandler.js'
-import { AuthRequest } from "../../../../middleware/auth.js'
+import { SupportTicket } from '@/products/whatsappapi/modules/SupportTicket.js"
+import { CustomError } from "@/middleware/errorHandler.js"
+import { AuthRequest } from "@/middleware/auth.js"
 
 // @desc    Get all support tickets
 // @route   GET /api/v1/support/tickets

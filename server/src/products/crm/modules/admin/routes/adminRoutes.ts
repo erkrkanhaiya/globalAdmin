@@ -7,43 +7,43 @@ import {
   updateUserRole,
   updateUserStatus,
   getUserById,
-} from '../controllers/adminController.js'
+} from '@/products/crm/modules/adminController.js"
 import {
   getAllProperties,
   getPropertyById,
   createProperty,
   updateProperty,
   deleteProperty,
-} from '../controllers/propertyController.js'
+} from '@/products/crm/modules/propertyController.js"
 import {
   getAllAgents,
   getAgentById,
   createAgent as createAgentDocument,
   updateAgent,
   deleteAgent,
-} from '../controllers/agentController.js'
+} from '@/products/crm/modules/agentController.js"
 import {
   getAllPayments,
   getPaymentById,
   updatePaymentStatus,
   getPaymentStats,
-} from '../controllers/paymentController.js'
+} from '@/products/crm/modules/paymentController.js"
 import {
   getAllAuctionRequests,
   getAuctionRequestById,
   approveAuctionRequest,
   declineAuctionRequest,
   deleteAuctionRequest,
-} from '../controllers/auctionController.js'
+} from '@/products/crm/modules/auctionController.js"
 import {
   getAllTickets,
   getTicketById,
   updateTicketStatus,
   addTicketReply,
   deleteTicket,
-} from '../controllers/supportController.js'
-import { getDashboardStats } from '../controllers/dashboardController.js'
-import { protect, authorize } from "../../../../middleware/auth.js'
+} from '@/products/crm/modules/supportController.js"
+import { getDashboardStats } from '@/products/crm/modules/dashboardController.js"
+import { protect, authorize } from "@/middleware/auth.js"
 
 const router = Router()
 

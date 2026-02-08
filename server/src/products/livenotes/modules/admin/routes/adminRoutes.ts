@@ -7,43 +7,43 @@ import {
   updateUserRole,
   updateUserStatus,
   getUserById,
-} from '../controllers/adminController.js'
+} from '@/products/livenotes/modules/adminController.js"
 import {
   getAllProperties,
   getPropertyById,
   createProperty,
   updateProperty,
   deleteProperty,
-} from '../controllers/propertyController.js'
+} from '@/products/livenotes/modules/propertyController.js"
 import {
   getAllAgents,
   getAgentById,
   createAgent as createAgentDocument,
   updateAgent,
   deleteAgent,
-} from '../controllers/agentController.js'
+} from '@/products/livenotes/modules/agentController.js"
 import {
   getAllPayments,
   getPaymentById,
   updatePaymentStatus,
   getPaymentStats,
-} from '../controllers/paymentController.js'
+} from '@/products/livenotes/modules/paymentController.js"
 import {
   getAllAuctionRequests,
   getAuctionRequestById,
   approveAuctionRequest,
   declineAuctionRequest,
   deleteAuctionRequest,
-} from '../controllers/auctionController.js'
+} from '@/products/livenotes/modules/auctionController.js"
 import {
   getAllTickets,
   getTicketById,
   updateTicketStatus,
   addTicketReply,
   deleteTicket,
-} from '../controllers/supportController.js'
-import { getDashboardStats } from '../controllers/dashboardController.js'
-import { protect, authorize } from "../../../../middleware/auth.js'
+} from '@/products/livenotes/modules/supportController.js"
+import { getDashboardStats } from '@/products/livenotes/modules/dashboardController.js"
+import { protect, authorize } from "@/middleware/auth.js"
 
 const router = Router()
 

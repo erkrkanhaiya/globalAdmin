@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { Product } from '../models/Product.js'
-import { CustomError } from '../../../middleware/errorHandler.js'
-import { AuthRequest } from '../../../middleware/auth.js'
+import { CustomError } from '@/middleware/errorHandler.js'
+import { AuthRequest } from '@/middleware/auth.js'
 
 /**
  * @desc    Get all products (filtered by admin's assigned products)
@@ -21,7 +21,7 @@ export const getProducts = async (
     if (req.user?.id) {
       // Import User model from main database connection
       const mongoose = await import('mongoose')
-      const { User } = await import('../../auth/models/User.js')
+      const { User } = await import('@/modules/auth/models/User.js')
       
       // Use default mongoose connection (main database)
       const user = await User.findById(req.user.id).select('assignedProducts role')

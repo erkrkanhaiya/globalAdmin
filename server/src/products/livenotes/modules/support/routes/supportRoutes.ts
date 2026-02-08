@@ -4,8 +4,8 @@ import {
   getTicket,
   createTicket,
   addReply,
-} from '../controllers/supportController.js'
-import { protect } from "../../../../middleware/auth.js'
+} from '@/products/livenotes/modules/supportController.js"
+import { protect } from "@/middleware/auth.js"
 
 const router = Router()
 

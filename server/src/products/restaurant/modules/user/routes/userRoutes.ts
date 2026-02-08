@@ -9,15 +9,15 @@ import {
   updateProfile,
   getVerificationStatus,
   changePassword,
-} from '../controllers/userController.js'
-import { protect } from '../../../../middleware/auth.js'
-import { basicAuth } from '../../../../middleware/basicAuth.js'
-import { validate } from '../../../../middleware/validator.js'
-import { agentRoutes } from '../../agent/index.js'
-import { propertyRoutes } from '../../property/index.js'
-import { auctionRoutes } from '../../auction/index.js'
-import { paymentRoutes } from '../../payment/index.js'
-import { supportRoutes } from '../../support/index.js'
+} from '../controllers/userController.js';
+import { protect } from '@/middleware/auth.js';
+import { basicAuth } from '@/middleware/basicAuth.js';
+import { validate } from '@/middleware/validator.js';
+import { agentRoutes } from '@/products/restaurant/modules/agent/index.js';
+import { propertyRoutes } from '@/products/restaurant/modules/property/index.js';
+import { auctionRoutes } from '@/products/restaurant/modules/auction/index.js';
+import { paymentRoutes } from '@/products/restaurant/modules/payment/index.js';
+import { supportRoutes } from '@/products/restaurant/modules/support/index.js';
 
 const router = Router()
 

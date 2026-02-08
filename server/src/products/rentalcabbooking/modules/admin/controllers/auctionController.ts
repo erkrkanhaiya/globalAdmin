@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express'
-import { AuctionRequest } from '../../auction/models/AuctionRequest.js'
-import { CustomError } from "../../../../middleware/errorHandler.js'
-import { AuthRequest } from "../../../../middleware/auth.js'
+import { AuctionRequest } from '@/modules/auction/models/AuctionRequest.js'
+import { CustomError } from '@/middleware/errorHandler.js'
+import { AuthRequest } from '@/middleware/auth.js'
 
 // @desc    Get all auction requests (Admin)
 // @route   GET /api/v1/admin/auction-requests

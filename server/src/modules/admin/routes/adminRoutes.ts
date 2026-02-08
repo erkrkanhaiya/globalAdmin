@@ -44,8 +44,8 @@ import {
   addTicketReply,
   deleteTicket,
 } from '../controllers/supportController.js'
-import { getDashboardStats } from '../controllers/dashboardController.js'
-import { protect, authorize } from '../../../middleware/auth.js'
+import { getDashboardStats } from '@/modules/admin/controllers/dashboardController.js'
+import { protect, authorize } from '@/middleware/auth.js'
 
 const router = Router()
 

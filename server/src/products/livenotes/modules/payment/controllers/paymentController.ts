@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express'
-import { Payment } from '../models/Payment.js'
-import { CustomError } from "../../../../middleware/errorHandler.js'
-import { AuthRequest } from "../../../../middleware/auth.js'
+import { Payment } from '@/products/livenotes/modules/Payment.js"
+import { CustomError } from "@/middleware/errorHandler.js"
+import { AuthRequest } from "@/middleware/auth.js"
 
 export const createPayment = async (
   req: AuthRequest,

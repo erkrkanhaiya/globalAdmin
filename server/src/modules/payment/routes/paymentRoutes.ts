@@ -5,7 +5,7 @@ import {
   getPayments,
   updatePaymentStatus,
 } from '../controllers/paymentController.js'
-import { protect } from '../../../middleware/auth.js'
+import { protect } from '@/middleware/auth.js'
 
 const router = Router()
 
