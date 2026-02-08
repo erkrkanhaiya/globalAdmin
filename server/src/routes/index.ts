@@ -1,14 +1,13 @@
 import { Router } from 'express'
-import { authRoutes } from '@/modules/auth/index.js'
-import { adminRoutes } from '@/modules/admin/index.js'
-import { userRoutes } from '@/modules/user/index.js'
-import { productRoutes } from '@/modules/product/index.js'
-import { productRouter } from '@/middleware/productRouter.js'
+import { authRoutes } from '@/products/restaurant/modules/auth/index.js'
+import { adminRoutes } from '@/products/restaurant/modules/admin/index.js'
+import { userRoutes } from '@/products/restaurant/modules/user/index.js'
+import { createProductRouter, productRouter } from '@/middleware/productRouter.js'
 
 // Import product routes from products folder
 // Each product has its own complete folder structure with controllers, models, routes, etc.
 import { restaurantRoutes } from '@/products/restaurant/index.js'
-import { livenotesRoutes } from '@/products/livenotes/index.js'
+import { livenotesRoutes } from '@/products/livenotes/routes/index.js' 
 import { rentalcabbookingRoutes } from '@/products/rentalcabbooking/index.js'
 import { whatsappapiRoutes } from '@/products/whatsappapi/index.js'
 import { crmRoutes } from '@/products/crm/index.js'
@@ -19,7 +18,7 @@ const router = Router()
 router.use('/auth', authRoutes)
 
 // Product management routes (get all products, create, update)
-router.use('/products', productRoutes)
+router.use('/products', createProductRouter(restaurantRoutes))
 
 // Product-specific routes (dynamic routing based on product slug)
 // These routes will be accessible as:

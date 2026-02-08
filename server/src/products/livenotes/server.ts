@@ -22,7 +22,7 @@ import { errorHandler } from "@/middleware/errorHandler.js"
 import swaggerUi from 'swagger-ui-express'
 import { requestLogger } from "@/middleware/requestLogger.js"
 import { swaggerSpec } from '@/config/swagger.livenotes.js'
-import livenotesRoutes from '@/products/livenotes/routes/index.js'
+import { livenotesRoutes } from '@/products/livenotes/routes/index.js'
 
 const PRODUCT_SLUG = 'livenotes'
 const DEFAULT_PORT = 5003

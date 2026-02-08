@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction, Router } from 'express'
-import { Product } from '../modules/product/models/Product.js'
-import { getProductConnection } from '../config/multiDatabase.js'
-import { CustomError } from './errorHandler.js'
+import { getProductConnection } from '@/config/multiDatabase.js'
+import { Product } from '@/modules/product/models/Product.js' 
+import { CustomError } from '@/middleware/errorHandler.js'
 
 /**
  * Middleware to create product-specific routes dynamically

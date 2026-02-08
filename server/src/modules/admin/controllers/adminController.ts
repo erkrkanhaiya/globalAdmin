@@ -1,6 +1,6 @@
 import { Response, NextFunction } from 'express'
 import mongoose from 'mongoose'
-import { getUserModel, UserRole } from '@/modules/auth/models/User.js'
+import { getUserModel, UserRole } from '@/modules/auth/models/User.js' 
 import { CustomError } from '@/middleware/errorHandler.js'
 import { AuthRequest } from '@/middleware/auth.js'
 import { nanoid } from 'nanoid'

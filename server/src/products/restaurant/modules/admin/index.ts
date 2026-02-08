@@ -1,6 +1,6 @@
 // Admin Module Exports
-export * from './controllers/adminController.js"
-export * from './controllers/propertyController.js"
+export * from './controllers/adminController.js';
+export * from './controllers/propertyController.js';
 // Export agentController with renamed createAgent to avoid conflict
 export {
   getAllAgents,
@@ -8,10 +8,10 @@ export {
   createAgent as createAgentDocument,
   updateAgent,
   deleteAgent,
-} from './controllers/agentController.js"
-export * from './controllers/paymentController.js"
-export * from './controllers/auctionController.js"
-export * from './controllers/supportController.js"
-export * from './controllers/dashboardController.js"
-export { default as adminRoutes } from './routes/adminRoutes.js"
+} from './controllers/agentController.js';
+export * from './controllers/paymentController.js';
+export * from './controllers/auctionController.js';
+export * from './controllers/supportController.js';
+export * from './controllers/dashboardController.js';
+export { default as adminRoutes } from './routes/adminRoutes.js';
 

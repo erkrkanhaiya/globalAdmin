@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { body } from 'express-validator'
-import { register, login } from '@/products/livenotes/modules/authController.js'
+import { register, login } from '@/products/livenotes/modules/auth/controllers/authController.js'
 import { basicAuth } from "@/middleware/basicAuth.js"
 import { validate } from "@/middleware/validator.js"
 
