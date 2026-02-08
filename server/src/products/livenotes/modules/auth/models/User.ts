@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose'
+import mongoose, { Schema, Document, Model } from 'mongoose'
 import bcrypt from 'bcryptjs'
 
 export type UserRole = 
@@ -171,6 +171,7 @@ const UserSchema = new Schema<IUser>(
   }
 )
 
+// Pre-save middleware to hash password and generate fullNumber
 UserSchema.pre('save', async function (next) {
   // Hash password only if it's modified and user is using email auth
   if (this.isModified('password') && this.password && this.authProvider === 'email') {
@@ -188,6 +189,7 @@ UserSchema.pre('save', async function (next) {
   next()
 })
 
+// Method to compare password
 UserSchema.methods.comparePassword = async function (
   candidatePassword: string
 ): Promise<boolean> {
@@ -197,17 +199,17 @@ UserSchema.methods.comparePassword = async function (
   return bcrypt.compare(candidatePassword, this.password)
 }
 
-// Export function to create model with product connection
-export const getUserModel = (connection: any) => {
+// Export function to create/get model with product connection
+export const getUserModel = (connection: mongoose.Connection): Model<IUser> => {
   if (connection.models.User) {
-    return connection.models.User
+    return connection.models.User as Model<IUser>
   }
   return connection.model<IUser>('User', UserSchema)
 }
 
 // Default export for direct use (will use default connection if productConnection not set)
-const User = mongoose.models.User || mongoose.model<IUser>('User', UserSchema)
+const User: Model<IUser> = (mongoose.models.User as Model<IUser>) || mongoose.model<IUser>('User', UserSchema)
 export default User
 
 // Export schema for reference
-export { UserSchema, }
+export { UserSchema }
